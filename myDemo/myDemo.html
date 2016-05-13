@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<title></title>
+	<!--如果要支持ie8的话，需要使用低版本的jquery-->
+	<script src="js/jquery2.js"></script>
+	<script src="js/unslider.js"></script>
+	<link rel="stylesheet" href="css/unslider.css">
+	<link rel="stylesheet" href="css/unslider-dots.css">
+	<!-- 添加一些定制样式，符合自己的要求 -->
+	<style>
+		#mySilder,.unslider-nav { width: 640px;}
+		#mySilder .arrow { position: absolute; top: 200px;}
+		#mySilder #al { left: 15px;}
+		#mySilder #ar { right: 15px;}
+		.unslider{
+			position: relative;
+		}
+		.unslider-nav{
+			background-color: gray;
+			filter:alpha(opacity=50);  
+	      	-moz-opacity:0.5;  
+	      	-khtml-opacity: 0.5;  
+	      	opacity: 0.5;
+	      	position: absolute;
+	      	bottom: 4px;
+		}
+		.unslider-wrap li p{
+			margin: 0;padding: 0;
+			position: relative;
+			top: 480px;
+		}
+	</style>
+</head>
+<body>
+<!-- 把要轮播的地方写上来 -->
+<div class="banner" id="mySilder">
+    <ul>
+        <li>
+        	<p>01.jpg</p>
+        	<img src="images/01.jpg" alt="" width="640" height="480" >
+        </li>
+        <li>
+       		<p>02.jpg</p>
+        	<img src="images/02.jpg" alt="" width="640" height="480" >
+        </li>
+        <li>
+        	<p>03.jpg</p>
+        	<img src="images/03.jpg" alt="" width="640" height="480" >
+        </li>
+        <li>
+        	<p>04.jpg</p>
+        	<img src="images/04.jpg" alt="" width="640" height="480" >
+        </li>
+        <li>
+        	<p>05.jpg</p>
+        	<img src="images/05.jpg" alt="" width="640" height="480" >
+        </li>
+    </ul>
+    <a href="javascript:void(0);" class="unslider-arrow prev"><img class="arrow" id="al" src="images/arrowl.png" alt="prev" width="20" height="35"></a>
+    <a href="javascript:void(0);" class="unslider-arrow next"><img class="arrow" id="ar" src="images/arrowr.png" alt="next" width="20" height="37"></a>
+</div>
+<!-- 最后用js控制 -->
+<script>
+$(document).ready(function(e) {
+    var unslider = $('#mySilder').unslider({
+		dots: true,
+		arrows: false
+	}),
+	data = unslider.data('unslider');
+	
+	$('.unslider-arrow').click(function() {
+        var fn = this.className.split(' ')[1];
+        data[fn]();
+    });
+
+});
+</script>
+</body>
+</html>
